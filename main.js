@@ -218,8 +218,8 @@ class Game {
             this.enemyProbs = [0.1, 0.0, 0.0, 0.0, 0.2, 0.1, 0.1, 0.1, 0.4];
         }
         else if (this.score > this.LTS[5]) {
-            this.enemyIntervalMin = 700;
-            this.enemyIntervalMax = 1000;
+            this.enemyIntervalMin = 800;
+            this.enemyIntervalMax = 1200;
             this.enemyProbs = [0.1, 0.1, 0.1, 0.1, 0.2, 0.1, 0.1, 0.1, 0.1];
         }
     }
