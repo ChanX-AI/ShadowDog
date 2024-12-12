@@ -57,7 +57,6 @@ export class Input {
             }
         });
         window.addEventListener('touchend', e => {
-            console.log(e)
             const x = e.changedTouches[0].pageX;
             if (x > window.innerWidth / 2) {
                 console.log('Touch end')
