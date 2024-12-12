@@ -99,7 +99,6 @@ class Game {
                 this.enemies = [];
                 this.energies = [];
                 this.collisions = [];
-                this.restartBtn.style.display = 'block';
             }
         }
     }
