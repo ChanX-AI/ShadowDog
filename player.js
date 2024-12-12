@@ -100,6 +100,6 @@ export class Player {
         if (this.game.currentBG === this.game.forestBG)
             return this.game.canvas.height - this.height - 25;
         else
-            return this.game.canvas.height - this.height - 105;
+            return this.game.canvas.height - this.height - this.game.canvas.height * 0.160;
     }
 }
