@@ -13,6 +13,7 @@ export class UI {
     }
 
     drawScore() {
+        this.game.ctx.font = '30px Creepster';
         this.game.ctx.fillText('Score : ' + this.game.score, 10, 30);
     }
 
