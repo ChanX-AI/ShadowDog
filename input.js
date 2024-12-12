@@ -5,6 +5,7 @@ export class Input {
         this.space = false;
         this.roll = false;
         this.releasedEnter = false;
+        this.touch = false;
         window.addEventListener('keydown', e => {
             if (e.key === 'ArrowDown') {
                 this.key = 'DOWN';
@@ -43,6 +44,9 @@ export class Input {
             if (e.key === 'r') {
                 this.roll = false;
             }
+        });
+        window.addEventListener('touchstart', e => {
+            this.touch = true;
         });
     }
 }
