@@ -323,9 +323,9 @@ function inBetween(min, max, value) {
 }
 
 function fullScreen(event) {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' || event.type === 'touchstart') {
         const elem = document.documentElement;
-        if (elem.requestFullscreen) {
+        if (elem.requestFullscreen ) {
             elem.requestFullscreen();
         } 
         else if (elem.webkitRequestFullscreen) {
@@ -335,7 +335,9 @@ function fullScreen(event) {
             elem.msRequestFullscreen(); // IE/Edge
         }
         window.removeEventListener('keydown', fullScreen);
+       window.removeEventListener('touchscreen', fullScreen);
         ctx.font = '30px Creepster';
     }
 }
 window.addEventListener('keydown', fullScreen);
+window.addEventListener('touchstart', fullScreen);
