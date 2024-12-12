@@ -97,9 +97,9 @@ export class Player {
     }
 
     groundLevel() {
-        if (this.game.currentBG === this.game.forestBG)
-            return this.game.canvas.height - this.height - 25;
-        else
-            return this.game.canvas.height - this.height - this.game.canvas.height * 0.160;
-    }
+            if (this.game.currentBG === this.game.forestBG)
+                return this.game.canvas.height - this.height - this.game.canvas.height * 0.05;
+            else
+                return this.game.canvas.height - this.height - this.game.canvas.height * 0.160;
+        }
 }
