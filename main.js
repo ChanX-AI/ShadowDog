@@ -22,7 +22,7 @@ class Game {
         this.ctx = context;
         this.forestBG = bgImages.forest;
         this.cityBG = bgImages.city;
-        this.currentBG = this.cityBG;
+        this.currentBG = this.forestBG;
         this.BGShiftFlag = false;
         this.bgms = bgms;
         this.gameSpeed = 0;
