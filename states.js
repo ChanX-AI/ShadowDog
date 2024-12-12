@@ -14,8 +14,10 @@ export class Stand {
     }
 
     manageStates() {
-        if (this.player.game.input.key === 'ENTER')
+        if (this.player.game.input.key === 'ENTER' || this.player.game.input.touch) {
+            this.player.game.touch = false;
             this.player.state = new Run(this.player);
+        }
     }
 }
 
