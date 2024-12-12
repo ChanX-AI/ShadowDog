@@ -335,7 +335,7 @@ function fullScreen(event) {
             elem.msRequestFullscreen(); // IE/Edge
         }
         window.removeEventListener('keydown', fullScreen);
-        window.removeEventListener('touchstart', fullScreen);
+        //window.removeEventListener('touchstart', fullScreen);
     }
 }
 window.addEventListener('keydown', fullScreen);
