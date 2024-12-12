@@ -49,6 +49,12 @@ class Game {
         this.gameOver = false;
         this.rechargeBGM = new Audio('./sounds/recharge.wav');
         this.LTS = [60, 150, 230, 320, 400, 500]; // Level Threshhold Scores
+        this.restartBtn = document.getElementById('restart-btn');
+        window.addEventListener('resize', e => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            this.player.y = this.player.groundLevel();
+        });
     }
 
     render(deltaTime) {
@@ -93,6 +99,7 @@ class Game {
                 this.energies = [];
                 this.collisions = [];
                 document.getElementById('game-over').style.display = 'block';
+                this.restartBtn.style.display = 'block';
             }
         }
     }
@@ -189,7 +196,7 @@ class Game {
     #shiftBG() {
         this.BGShiftFlag = true;
         this.currentBG = this.cityBG;
-        this.player.y = this.canvas.height - this.player.height - 105;
+        this.player.y = this.player.groundLevel();
     }
 
     #manageEnemiesProbs() {
@@ -228,6 +235,7 @@ class Game {
 
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
+ctx.font = '30px Creepster';
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -281,7 +289,7 @@ window.addEventListener('load', function(){
     };
 
     game = new Game(canvas, ctx, bgImages, bgms);
-    this.requestAnimationFrame(animate);
+    requestAnimationFrame(animate);
 });
 
 function animate(currTime) {
@@ -312,3 +320,20 @@ function detectCollision(objectA, objectB) {
 function inBetween(min, max, value) {
     return value > min && value < max;
 }
+
+function fullScreen(event) {
+    if (event.key === 'Enter') {
+        const elem = document.documentElement;
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } 
+        else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen(); // Safari
+        } 
+        else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen(); // IE/Edge
+        }
+        window.removeEventListener('keydown', handleKeyOnce);
+    }
+}
+window.addEventListener('keydown', fullScreen);
