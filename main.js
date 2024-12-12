@@ -54,6 +54,7 @@ class Game {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             this.player.y = this.player.groundLevel();
+            this.ctx.font = '30px Creepster';
         });
     }
 
@@ -333,7 +334,8 @@ function fullScreen(event) {
         else if (elem.msRequestFullscreen) {
             elem.msRequestFullscreen(); // IE/Edge
         }
-        window.removeEventListener('keydown', handleKeyOnce);
+        window.removeEventListener('keydown', fullScreen);
+        ctx.font = '30px Creepster';
     }
 }
 window.addEventListener('keydown', fullScreen);
