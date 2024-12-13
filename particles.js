@@ -8,8 +8,11 @@ export class Explosion {
         this.maxFrames = 6;
         this.spriteWidth = 200;
         this.spriteHeight = 179;
-        this.width = this.spriteWidth / 2;
-        this.height = this.spriteHeight / 2;
+        this.aspectRatio = this.spriteWidth / this.spriteHeight;
+        this.height = this.enemy.height;
+        this.width = this.height * this.aspectRatio;
+        //this.width = this.spriteWidth / 2;
+        //this.height = this.spriteHeight / 2;
         this.timer = 0;
         this.interval = 60;
         this.sound = new Audio();
@@ -46,16 +49,16 @@ export class Energy {
     constructor(game) {
         this.game = game;
         this.img = document.getElementById('white_dog');
-        this.energyImg = document.getElementById('energy');
         this.spriteWidth = 200;
         this.spriteHeight = 182;
+        this.aspectRatio = this.spriteWidth / this.spriteHeight;
+        this.height = this.game.player.height;
+        this.width = this.height * this.aspectRatio;
         this.frameX = 0;
         this.frameY = 10;
         this.maxFrames = 6;
-        this.width = this.spriteWidth;
-        this.height = this.spriteHeight;
-        this.energyWidth = this.energyImg.width;
-        this.energyHeight = this.energyImg.height;
+        //this.width = this.spriteWidth;
+        //this.height = this.spriteHeight;
         this.x = this.game.canvas.width;
         this.y = this.game.player.groundLevel() / 2;
         this.boundX = this.x + 60;
@@ -89,8 +92,8 @@ export class Energy {
             this.frameX === this.maxFrames ? this.frameX = 0 : this.frameX++;
         } else this.timer += deltaTime;
         this.x -= this.game.gameSpeed + this.velX;
-        this.boundX = this.x + 60;
-        this.boundY = this.y + 40;
+        this.boundX = this.x + 0.3 * this.width;
+        this.boundY = this.y + 0.22 * this.height;
         this.boundWidth = this.width / 2;
         this.boundHeight = this.height / 1.8;
         if (this.x < -this.width) this.flagToRemove = true;

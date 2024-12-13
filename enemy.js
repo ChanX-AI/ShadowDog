@@ -5,9 +5,6 @@ export class Enemy {
         this.frameY = 0;
         this.timer = 0;
         this.interval = 5;
-        this.aspectRatio = this.spriteWidth / this.spriteHeight;
-        this.height = 0.3 * window.innerHeight;
-        this.width = this.height / this.aspectRatio;
     }
 
     draw() {

@@ -22,7 +22,7 @@ class Game {
         this.ctx = context;
         this.forestBG = bgImages.forest;
         this.cityBG = bgImages.city;
-        this.currentBG = this.forestBG;
+        this.currentBG = this.cityBG;
         this.BGShiftFlag = false;
         this.bgms = bgms;
         this.gameSpeed = 0;
@@ -36,7 +36,7 @@ class Game {
         this.collisions = [];
         this.energies = [];
         this.energyTimer = 0;
-        this.energyInterval = 30000;
+        this.energyInterval = 100//30000;
         this.enemyTimer = 0;
         this.enemyInterval = 5000;
         this.enemyIntervalMin = 3000;
@@ -60,6 +60,8 @@ class Game {
     }
 
     render(deltaTime) {
+
+        this.deltaTime = deltaTime;
 
         this.currentBG.forEach(bgImg => {
             bgImg.draw(ctx);
@@ -236,7 +238,7 @@ class Game {
 
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
-//setGlobalFont(ctx, '30px Creepster');
+const startBtn = document.getElementById('start-btn');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -281,7 +283,7 @@ window.addEventListener('load', function(){
     const bgms = [bgm1, bgm2, bgm3, bgm3, bgm4];
     bgms.forEach(bgm => {
         bgm.loop = true;
-        bgm.play();
+        //bgm.play();
     });
 
     const bgImages = {
@@ -323,7 +325,7 @@ function inBetween(min, max, value) {
 }
 
 function fullScreen(event) {
-    if (event.key === 'Enter' || event.type === 'touchstart') {
+    if (event.key === 'Enter' || event.type === 'click') {
         const elem = document.documentElement; // or use a specific element like `canvas`
         if (elem.requestFullscreen) {
             elem.requestFullscreen();
@@ -335,10 +337,9 @@ function fullScreen(event) {
             elem.msRequestFullscreen(); // IE/Edge
         }
         window.removeEventListener('keydown', fullScreen);
-        //window.removeEventListener('touchstart', fullScreen);
+        window.removeEventListener('click', fullScreen);
+        startBtn.style.display = 'none';
     }
 }
 window.addEventListener('keydown', fullScreen);
-window.addEventListener('touchstart', fullScreen);
-
-
+startBtn.addEventListener('click', fullScreen);

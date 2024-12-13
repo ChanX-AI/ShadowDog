@@ -49,7 +49,7 @@ export class Run {
         this.player.game.input.key = '';
         start_info.style.display = 'none';
         resume_info.style.display = 'none';
-        this.player.game.gameSpeed = 5;
+        this.player.game.gameSpeed = 0.3 * this.player.game.deltaTime;
         this.player.game.gameRunning = true;
         this.player.isRolling = false;
     }
@@ -72,7 +72,7 @@ export class Jump {
         this.player.frameY = 1;
         this.player.maxFrames = 6;
         this.player.game.input.key = '';
-        this.player.game.gameSpeed = 8;
+        this.player.game.gameSpeed = 0.65 * this.player.game.deltaTime;
         this.player.isJumping = true;
         this.player.isRolling = false;
     }
@@ -92,7 +92,7 @@ export class Fall {
         this.player.frameX = 0;
         this.player.frameY = 2;
         this.player.maxFrames = 6;
-        this.player.game.gameSpeed = 8;
+        this.player.game.gameSpeed = 0.65 * this.player.game.deltaTime;
         this.player.isFalling = true;
         this.player.game.input.key = '';
         this.player.isRolling = false;
@@ -112,7 +112,7 @@ export class Roll {
         this.player.frameX = 0;
         this.player.frameY = 6;
         this.player.maxFrames = 6;
-        this.player.game.gameSpeed = 8;
+        this.player.game.gameSpeed = 0.65 * this.player.game.deltaTime;;
         this.rollTimer = 0;
         this.rollInterval = 80;
         this.player.game.input.key = '';
