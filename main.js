@@ -36,7 +36,7 @@ class Game {
         this.collisions = [];
         this.energies = [];
         this.energyTimer = 0;
-        this.energyInterval = 100//30000;
+        this.energyInterval = 30000;
         this.enemyTimer = 0;
         this.enemyInterval = 5000;
         this.enemyIntervalMin = 3000;
