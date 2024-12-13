@@ -198,7 +198,7 @@ class Game {
 
     #shiftBG() {
         this.BGShiftFlag = true;
-        this.currentBG = this.foestBG;
+        this.currentBG = this.forestBG;
         this.player.y = this.player.groundLevel();
     }
 
