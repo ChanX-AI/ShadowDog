@@ -136,6 +136,7 @@ class Game {
                     this.lives = 5;
                     this.score = 0;
                     this.currentBG = this.cityBG;
+                    this.player.y = this.player.groundLevel();
                     this.player.currEnergy = this.player.maxEnergy;
                     this.restartBtn.style.display = 'none';
                     this.gameOver = false;
