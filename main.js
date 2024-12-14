@@ -142,6 +142,8 @@ class Game {
                     this.gameOver = false;
                     this.enemyIntervalMin = 3000;
                     this.enemyIntervalMax = 6000;
+                    this.energyIntervalMax = 50000;
+                    this.energyIntervalMin = 30000;
                     this.enemyProbs = [0.5, 0.4, 0.08, 0.02, 0, 0, 0, 0, 0];
                     this.player.state = new Run(this.player);
                 });
