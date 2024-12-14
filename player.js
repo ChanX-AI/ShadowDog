@@ -8,17 +8,15 @@ export class Player {
         this.spriteWidth = 575;
         this.spriteHeight = 523;
         this.aspectRatio = this.spriteWidth / this.spriteHeight;
-        this.height = 0.3 * this.game.canvas.height;
+        this.height = 0.2 * this.game.canvas.height;
         this.width = this.height / this.aspectRatio;
-        //this.width = 200;
-        //this.height = this.width * this.aspectRatio;
         this.x = 15;
         this.y = this.groundLevel();
         this.velY = 0;
-        this.gravity = 0.5;
+        this.gravity = 0.02;
         this.maxEnergy = 200;
         this.currEnergy = this.maxEnergy;
-        this.interval = 20;
+        this.interval = 2 * this.game.deltaTime;
         this.timer = 0;
         this.frameX = 0;
         this.frameY = 0;
@@ -28,10 +26,10 @@ export class Player {
         this.isFalling = false;
         this.isRolling = false;
         this.jumpDist = 0.5 * window.innerHeight;
-        this.boundX = this.x + 40;
-        this.boundY = this.y + 20;
-        this.boundWidth = this.width - 60;
-        this.boundHeight = this.height - 20;
+        this.boundX = this.x + 0.25 * this.width;
+        this.boundY = this.y + 0.25 * this.height;
+        this.boundWidth = 0.6 * this.width;
+        this.boundHeight = 0.75 * this.height;
         this.img = document.getElementById('player');
     }
 
@@ -56,7 +54,7 @@ export class Player {
             this.frameX === this.maxFrames ? this.frameX = 0 : this.frameX++;
         } else this.timer += deltaTime;
         this.state.manageStates();
-        this.y += this.velY;
+        this.y += this.velY * deltaTime;
         if (this.isRolling) {
             this.boundX = this.x + 0.25 * this.width;
             this.boundY = this.y + 0.42 * this.height;

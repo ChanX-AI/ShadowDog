@@ -11,7 +11,7 @@ import { Layer } from "./background.js";
 import { Bat, Ghost, Worm, Spinner, Bat2, Raven, Zombie, Spider, Spider2 } from "./enemies.js";
 import { UI } from "./UI.js";
 import { Explosion, Energy } from "./particles.js";
-import { Hit, Dizzy } from "./states.js";
+import { Run, Hit, Dizzy } from "./states.js";
 
 
 class Game {
@@ -49,10 +49,18 @@ class Game {
         this.rechargeBGM = new Audio('./sounds/recharge.wav');
         this.LTS = [60, 150, 230, 320, 400, 500]; // Level Threshhold Scores
         this.restartBtn = document.getElementById('restart-btn');
+        window.addEventListener('fullscreenchange', e => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            this.player.height = 0.2 * this.canvas.height;
+            this.player.width = this.player.height / this.player.aspectRatio;
+            this.player.jumpDist = 0.5 * window.innerHeight;
+            this.player.y = this.player.groundLevel();
+        });
         window.addEventListener('resize', e => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-            this.player.height = 0.3 * this.canvas.height;
+            this.player.height = 0.2 * this.canvas.height;
             this.player.width = this.player.height / this.player.aspectRatio;
             this.player.jumpDist = 0.5 * window.innerHeight;
             this.player.y = this.player.groundLevel();
@@ -62,6 +70,9 @@ class Game {
     render(deltaTime) {
 
         this.deltaTime = deltaTime;
+        if (this.deltaTime != 0) {
+            this.player.interval = 2 * this.deltaTime;
+        }
 
         this.currentBG.forEach(bgImg => {
             bgImg.draw(ctx);
@@ -96,12 +107,22 @@ class Game {
             if (this.gameFrames % 60 === 0) this.score += 1;
             if (this.lives <= 0) {
                 this.gameOver = true;
+                this.player.state = new Dizzy(this.player);
                 this.gameRunning = false;
                 this.gameSpeed = 0;
-                this.player.state = new Dizzy(this.player);
                 this.enemies = [];
                 this.energies = [];
                 this.collisions = [];
+                this.gameFrames = 0;
+                this.restartBtn.style.display = 'block';
+                this.restartBtn.addEventListener('click', e => {
+                    this.lives = 5;
+                    this.score = 0;
+                    this.player.currEnergy = this.player.maxEnergy;
+                    this.restartBtn.style.display = 'none';
+                    this.gameOver = false;
+                    this.player.state = new Run(this.player);
+                });
             }
         }
         if (this.gameOver) this.UI.drawGameOver();
@@ -198,7 +219,7 @@ class Game {
 
     #shiftBG() {
         this.BGShiftFlag = true;
-        this.currentBG = this.forestBG;
+        this.currentBG = this.cityBG;
         this.player.y = this.player.groundLevel();
     }
 
@@ -243,7 +264,7 @@ const startBtn = document.getElementById('start-btn');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let lastTime = 1;
+let lastTime = 0;
 let game;
 
 window.addEventListener('load', function(){
@@ -293,15 +314,15 @@ window.addEventListener('load', function(){
 
     game = new Game(canvas, ctx, bgImages, bgms);
     requestAnimationFrame(animate);
+    function animate(currTime) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const deltaTime = currTime - lastTime;
+        lastTime = currTime;
+        game.render(deltaTime);
+        requestAnimationFrame(animate);
+    }
 });
 
-function animate(currTime) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    const deltaTime = currTime - lastTime;
-    lastTime = currTime;
-    game.render(deltaTime);
-    requestAnimationFrame(animate);
-}
 
 
 function detectCollision(objectA, objectB) {

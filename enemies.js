@@ -9,7 +9,7 @@ export class Bat extends Enemy {
         this.spriteWidth = 293;
         this.spriteHeight = 155;
         this.aspectRatio = this.spriteWidth / this.spriteHeight;
-        this.height = 0.13 * this.game.canvas.height;
+        this.height = 0.5 * this.game.player.height;
         this.width = this.height * this.aspectRatio;
         this.maxFrames = 5;
         this.x = this.game.canvas.width;
@@ -28,14 +28,14 @@ export class Ghost extends Enemy {
         this.spriteWidth = 260;
         this.spriteHeight = 209;
         this.aspectRatio = this.spriteWidth / this.spriteHeight;
-        this.height = 0.13 * this.game.canvas.height;
+        this.height = 0.5 * this.game.player.height;
         this.width = this.height * this.aspectRatio;
         this.maxFrames = 5;
         this.x = this.game.canvas.width;
         this.y = 2 * this.height;
         this.flagToRemove = false;
         this.velX = 0;
-        this.amplitude = Math.random() * 5 + 4;
+        this.amplitude = Math.random() * (0.013 * this.game.canvas.height - 1.5) + 1.5;
         this.angle = 0;
         this.deltaAngle = 0.05;
     }
@@ -56,7 +56,7 @@ export class Worm extends Enemy {
         this.spriteWidth = 229;
         this.spriteHeight = 171;
         this.aspectRatio = this.spriteWidth / this.spriteHeight;
-        this.height = 0.13 * this.game.canvas.height;
+        this.height = 0.5 * this.game.player.height;
         this.width = this.height * this.aspectRatio;
         this.maxFrames = 5;
         this.x = this.game.canvas.width;
@@ -75,14 +75,14 @@ export class Spinner extends Enemy {
         this.spriteWidth = 213;
         this.spriteHeight = 212;
         this.aspectRatio = this.spriteWidth / this.spriteHeight;
-        this.height = 0.13 * this.game.canvas.height;
+        this.height = 0.5 * this.game.player.height;
         this.width = this.height * this.aspectRatio;
         this.maxFrames = 8;
         this.x = this.game.canvas.width;
         this.y = 2 * this.height;
         this.flagToRemove = false;
         this.velX = 2;
-        this.amplitude = Math.random() * 4 + 3;
+        this.amplitude = Math.random() * (0.013 * this.game.canvas.height - 1.5) + 1.5;
         this.angle = 0;
         this.deltaAngle = 0.05;
     }
@@ -104,14 +104,14 @@ export class Bat2 extends Enemy {
         this.spriteWidth = 266;
         this.spriteHeight = 188;
         this.aspectRatio = this.spriteWidth / this.spriteHeight;
-        this.height = 0.13 * this.game.canvas.height;
+        this.height = 0.5 *  this.game.player.height;
         this.width = this.height * this.aspectRatio;
         this.maxFrames = 5;
         this.x = this.game.canvas.width;
         this.y = 2 * this.height;
         this.flagToRemove = false;
         this.velX = 2;
-        this.amplitude = Math.random() * 5 + 4;
+        this.amplitude = Math.random() * (0.013 * this.game.canvas.height - 1.5) + 1.5;
         this.angle = 0;
         this.deltaAngle = 0.05;
     }
@@ -119,7 +119,7 @@ export class Bat2 extends Enemy {
     update(deltaTime) {
         super.update(deltaTime);
         this.y += this.amplitude * Math.sin(this.angle);
-        this.angle += this.deltaAngle;
+        this.angle += this.deltaAngle ;
     }
 }
 
@@ -132,7 +132,7 @@ export class Raven extends Enemy {
         this.spriteWidth = 271;
         this.spriteHeight = 194;
         this.aspectRatio = this.spriteWidth / this.spriteHeight;
-        this.height = 0.13 * this.game.canvas.height;
+        this.height = 0.5 * this.game.player.height;
         this.width = this.height * this.aspectRatio;
         this.maxFrames = 5;
         this.x = this.game.canvas.width;
@@ -151,7 +151,7 @@ export class Zombie extends Enemy {
         this.spriteWidth = 292;
         this.spriteHeight = 410;
         this.aspectRatio = this.spriteWidth / this.spriteHeight;
-        this.height = 0.22 * this.game.canvas.height;
+        this.height = this.game.player.height;
         this.width = this.height * this.aspectRatio;
         this.maxFrames = 7;
         this.x = this.game.canvas.width;
@@ -170,7 +170,7 @@ export class Spider extends Enemy {
         this.spriteWidth = 310;
         this.spriteHeight = 175;
         this.aspectRatio = this.spriteWidth / this.spriteHeight;
-        this.height = 0.13 * this.game.canvas.height;
+        this.height = 0.4 * this.game.player.height;
         this.width = this.height * this.aspectRatio;
         this.maxFrames = 5;
         this.x = Math.random() * (this.game.player.x + this.game.player.width - this.game.canvas.width / 2) + 
@@ -208,7 +208,7 @@ export class Spider2 extends Enemy {
         this.spriteWidth = 120;
         this.spriteHeight = 144;
         this.aspectRatio = this.spriteWidth / this.spriteHeight;
-        this.height = 0.13 * this.game.canvas.height;
+        this.height = 0.5 * this.game.player.height;
         this.width = this.height * this.aspectRatio;
         this.maxFrames = 5;
         this.x = Math.random() * (this.game.player.x + this.game.player.width - this.game.canvas.width / 2) + 

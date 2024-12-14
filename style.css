@@ -32,3 +32,16 @@ h1 {
     background-color: blue;
     opacity: 0;
 }
+
+#restart-btn {
+    position: fixed;
+    width: 100px;
+    height: 50px;
+    top: 60%;
+    left: 40%;
+    font-size: larger;
+    background-color: grey;
+    color: black;
+    font-family: 'Creepster', cursive;
+    display: none;
+}
