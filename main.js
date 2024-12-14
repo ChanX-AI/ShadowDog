@@ -1,6 +1,23 @@
 /*
-    * Shadow Dog PC Game
+    * Shadow Dog Game
                         --ChanX
+
+     Rules :
+        In PC :
+            * Press Space to Jump
+            * Press Enter to Attack/Roll
+        In Mobile :
+            * Rotate your device (Recommended)
+            * Touch left half of screen to Jump
+            * Touch right half of screen to Attack/Roll
+        
+        Game Properties :
+            * Score increases as game progresses
+            * Colliding with enemy in any state other than Roll results in loss of life
+            * Colliding with enemy in Roll state increases score
+            * Rolling state results in loss of energy which can be seen at top right of screen
+            * Player can't Roll if energy is less than zero
+            * Player can fill his energy by collecting energy coins which appears like player Roll and white in color
  */
 
 
