@@ -239,7 +239,7 @@ class Game {
 
     #shiftBG() {
         this.BGShiftFlag = true;
-        this.currentBG = this.cityBG;
+        this.currentBG = this.forestBG;
         this.player.y = this.player.groundLevel();
     }
 
