@@ -49,7 +49,7 @@ export class Run {
         this.player.game.input.key = '';
         start_info.style.display = 'none';
         resume_info.style.display = 'none';
-        this.player.game.gameSpeed = 5; //0.3 * this.player.game.deltaTime;
+        this.player.game.gameSpeed = 0.3 * this.player.game.deltaTime;
         this.player.game.gameRunning = true;
         this.player.isRolling = false;
     }
