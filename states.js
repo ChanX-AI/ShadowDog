@@ -72,7 +72,7 @@ export class Jump {
         this.player.frameY = 1;
         this.player.maxFrames = 6;
         this.player.game.input.key = '';
-        //this.player.game.gameSpeed = 0.65 * this.player.game.deltaTime;
+        this.player.game.gameSpeed = 0.5 * this.player.game.deltaTime;
         this.player.isJumping = true;
         this.player.isRolling = false;
     }
