@@ -43,7 +43,7 @@ class Game {
         this.BGShiftFlag = false;
         this.bgms = bgms;
         this.gameSpeed = 0;
-        this.score = 10;
+        this.score = 0;
         this.player = new Player(this);
         this.input = new Input();
         this.UI = new UI(this);
