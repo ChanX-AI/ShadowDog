@@ -340,7 +340,7 @@ window.addEventListener('load', function(){
     requestAnimationFrame(animate);
     function animate(currTime) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        const deltaTime = currTime - lastTime;
+        const deltaTime = (currTime - lastTime) / 1000;
         lastTime = currTime;
         game.render(deltaTime);
         requestAnimationFrame(animate);
