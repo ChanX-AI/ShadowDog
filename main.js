@@ -93,7 +93,7 @@ class Game {
 
         this.currentBG.forEach(bgImg => {
             bgImg.draw(ctx);
-            bgImg.update(this.gameSpeed);
+            bgImg.update(50 * this.gameSpeed * deltaTime);
         });
         
         this.#handleEnemies(deltaTime);
